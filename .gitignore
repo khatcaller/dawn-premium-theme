@@ -1,0 +1,69 @@
+# Shopify Theme Development .gitignore
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+.loadpath
+
+# Shopify CLI
+.shopify/
+config.yml
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Node modules (if using any build tools)
+node_modules/
+/dist/
+/build/
+
+# Backup files
+*.backup
+*~
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Theme editor auto-generated files
+*.liquid~
+
+# Config with credentials (if any)
+config/settings_data.json.backup
+
+# IDE specific
+*.sublime-project
+*.sublime-workspace
+
+# Optional: Uncomment if you want to ignore settings_data.json
+# (contains store-specific theme settings)
+# config/settings_data.json

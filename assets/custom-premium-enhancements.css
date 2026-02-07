@@ -1,0 +1,626 @@
+/*
+ * Premium Theme Enhancements for Dawn 15.4.1
+ * Created: February 2026
+ * Purpose: Elevate Dawn's basic styling to premium modern aesthetic
+ */
+
+/* ============================================================
+   TYPOGRAPHY REFINEMENTS
+   ============================================================ */
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Better heading hierarchy */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+h1, .h1 {
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  letter-spacing: -0.03em;
+}
+
+h2, .h2 {
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  letter-spacing: -0.025em;
+}
+
+/* Improved body text readability */
+p {
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+/* Better link styling */
+a:not(.button) {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:not(.button):hover {
+  opacity: 0.75;
+}
+
+/* ============================================================
+   PREMIUM BUTTONS
+   ============================================================ */
+
+.button,
+button:not([disabled]),
+input[type="submit"] {
+  position: relative;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  padding: 1.4rem 3.2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  border-radius: var(--buttons-radius, 0);
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.button:hover::before {
+  transform: translateX(0);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button--primary {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.button--secondary {
+  backdrop-filter: blur(10px);
+}
+
+/* ============================================================
+   MODERN CARD DESIGN
+   ============================================================ */
+
+.card-wrapper,
+.card,
+.product-card-wrapper {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-wrapper:hover,
+.product-card-wrapper:hover {
+  transform: translateY(-6px);
+}
+
+.card {
+  border-radius: max(var(--product-card-corner-radius, 0), 12px);
+  overflow: hidden;
+  background: rgba(var(--color-background), 1);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Product card image hover effect */
+.card__media {
+  overflow: hidden;
+  position: relative;
+}
+
+.card__media img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover .card__media img {
+  transform: scale(1.05);
+}
+
+/* Card content spacing */
+.card__content {
+  padding: 2rem;
+}
+
+.card__information {
+  padding: 1.5rem 0 0.5rem;
+}
+
+/* ============================================================
+   ENHANCED HEADER
+   ============================================================ */
+
+.header {
+  backdrop-filter: blur(20px);
+  background: rgba(var(--color-background), 0.95);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.header.scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Modern navigation */
+.header__menu-item {
+  position: relative;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.header__menu-item::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header__menu-item:hover::after,
+.header__menu-item.active::after {
+  width: 100%;
+}
+
+/* ============================================================
+   PREMIUM SECTIONS
+   ============================================================ */
+
+.shopify-section {
+  position: relative;
+}
+
+/* Add breathing room between sections */
+.shopify-section + .shopify-section {
+  margin-top: max(var(--spacing-sections-desktop, 0), 60px);
+}
+
+@media screen and (max-width: 749px) {
+  .shopify-section + .shopify-section {
+    margin-top: max(var(--spacing-sections-mobile, 0), 40px);
+  }
+}
+
+/* Image banner enhancements */
+.banner__media {
+  position: relative;
+  overflow: hidden;
+}
+
+.banner__media::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.banner:hover .banner__media::after {
+  opacity: 1;
+}
+
+/* ============================================================
+   FORM INPUTS
+   ============================================================ */
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="search"],
+textarea,
+select {
+  border-radius: var(--inputs-radius, 4px);
+  border: 1px solid rgba(var(--color-foreground), 0.2);
+  padding: 1.4rem 1.6rem;
+  font-size: 1.5rem;
+  transition: all 0.2s ease;
+  background: rgba(var(--color-background), 1);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: rgba(var(--color-foreground), 0.5);
+  box-shadow: 0 0 0 3px rgba(var(--color-foreground), 0.08);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   PRODUCT PAGE ENHANCEMENTS
+   ============================================================ */
+
+.product__info-wrapper {
+  padding: 3rem;
+  background: rgba(var(--color-background), 0.5);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+
+@media screen and (max-width: 749px) {
+  .product__info-wrapper {
+    padding: 2rem;
+  }
+}
+
+.product__title {
+  font-size: clamp(2.8rem, 4vw, 3.6rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+/* Price display */
+.price {
+  font-weight: 600;
+  font-size: 2.4rem;
+  letter-spacing: -0.01em;
+}
+
+.price--on-sale .price__regular {
+  color: rgba(var(--color-foreground), 0.5);
+  font-size: 1.8rem;
+}
+
+/* Product badges */
+.badge {
+  border-radius: var(--badge-corner-radius, 20px);
+  padding: 0.6rem 1.4rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================================
+   COLLECTION GRID
+   ============================================================ */
+
+.collection {
+  position: relative;
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 3rem;
+}
+
+@media screen and (max-width: 749px) {
+  .collection-grid {
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+/* ============================================================
+   FOOTER STYLING
+   ============================================================ */
+
+.footer {
+  margin-top: 8rem;
+  padding-top: 6rem;
+  border-top: 1px solid rgba(var(--color-foreground), 0.1);
+  background: linear-gradient(
+    180deg,
+    rgba(var(--color-background), 0) 0%,
+    rgba(var(--color-foreground), 0.02) 100%
+  );
+}
+
+/* ============================================================
+   SUBTLE ANIMATIONS
+   ============================================================ */
+
+/* Fade in on scroll */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+.animate-on-scroll:nth-child(1) { animation-delay: 0.1s; }
+.animate-on-scroll:nth-child(2) { animation-delay: 0.2s; }
+.animate-on-scroll:nth-child(3) { animation-delay: 0.3s; }
+.animate-on-scroll:nth-child(4) { animation-delay: 0.4s; }
+
+/* Loading shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--color-foreground), 0.05) 0%,
+    rgba(var(--color-foreground), 0.1) 50%,
+    rgba(var(--color-foreground), 0.05) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ============================================================
+   CART DRAWER ENHANCEMENTS
+   ============================================================ */
+
+.cart-drawer {
+  backdrop-filter: blur(20px);
+  box-shadow: -4px 0 40px rgba(0, 0, 0, 0.15);
+}
+
+.cart-item {
+  padding: 2rem;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+.cart-item:hover {
+  background: rgba(var(--color-foreground), 0.02);
+}
+
+/* ============================================================
+   SEARCH ENHANCEMENTS
+   ============================================================ */
+
+.search-modal__content,
+.predictive-search {
+  backdrop-filter: blur(20px);
+  background: rgba(var(--color-background), 0.95);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+  border-radius: 16px;
+}
+
+.predictive-search__item {
+  transition: background 0.2s ease;
+  border-radius: 8px;
+  padding: 1.2rem;
+}
+
+.predictive-search__item:hover {
+  background: rgba(var(--color-foreground), 0.04);
+}
+
+/* ============================================================
+   QUANTITY SELECTOR
+   ============================================================ */
+
+.quantity__button {
+  border-radius: 50%;
+  width: 3.6rem;
+  height: 3.6rem;
+  transition: all 0.2s ease;
+}
+
+.quantity__button:hover {
+  background: rgba(var(--color-foreground), 0.08);
+  transform: scale(1.1);
+}
+
+/* ============================================================
+   ACCORDION / COLLAPSIBLE CONTENT
+   ============================================================ */
+
+.accordion summary {
+  font-weight: 500;
+  padding: 1.8rem 2rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.accordion summary:hover {
+  background: rgba(var(--color-foreground), 0.03);
+}
+
+.accordion__content {
+  padding: 2rem;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   NEWSLETTER SIGNUP
+   ============================================================ */
+
+.newsletter-form {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.newsletter-form__field-wrapper {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  padding: 0.4rem;
+  border-radius: 50px;
+  background: rgba(var(--color-background), 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.newsletter-form__field-wrapper input {
+  border: none;
+  padding: 1.4rem 2rem;
+  flex: 1;
+  border-radius: 50px;
+}
+
+.newsletter-form__field-wrapper button {
+  border-radius: 50px;
+  padding: 1.4rem 3rem;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   MEDIA QUERIES FOR RESPONSIVE REFINEMENTS
+   ============================================================ */
+
+@media screen and (max-width: 749px) {
+  /* Reduce button padding on mobile */
+  .button {
+    padding: 1.2rem 2.4rem;
+    font-size: 1.2rem;
+  }
+  
+  /* Adjust card hover effects on mobile (reduce intensity) */
+  .card-wrapper:hover {
+    transform: translateY(-3px);
+  }
+  
+  /* Simplify animations on mobile */
+  * {
+    animation-duration: 0.4s !important;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  /* Enhanced parallax effect on desktop */
+  .banner__media img {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Better hover states on desktop */
+  .product-card-wrapper:hover .card {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY ENHANCEMENTS
+   ============================================================ */
+
+/* Better focus indicators */
+*:focus-visible {
+  outline: 3px solid rgba(var(--color-button), 0.5);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Skip to content link */
+.skip-to-content-link:focus {
+  clip: auto;
+  overflow: auto;
+  position: fixed;
+  z-index: 10000;
+  top: 1rem;
+  left: 1rem;
+  background: rgb(var(--color-background));
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+.premium-gradient-bg {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--color-background), 1) 0%,
+    rgba(var(--color-foreground), 0.03) 100%
+  );
+}
+
+.premium-glass-effect {
+  background: rgba(var(--color-background), 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+}
+
+.premium-elevation-1 {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.premium-elevation-2 {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.premium-elevation-3 {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================================================
+   DARK MODE SUPPORT (if enabled in theme settings)
+   ============================================================ */
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  }
+  
+  input:focus,
+  textarea:focus,
+  select:focus {
+    box-shadow: 0 0 0 3px rgba(var(--color-foreground), 0.15);
+  }
+}
+
+/* ============================================================
+   PRINT STYLES
+   ============================================================ */
+
+@media print {
+  .header,
+  .footer,
+  .cart-drawer,
+  .button {
+    box-shadow: none !important;
+  }
+}
